@@ -1,0 +1,68 @@
+{
+  "name": "seda/tracing",
+  "description": "A wrapper to help doing traces",
+  "type": "library",
+  "license": "proprietary",
+  "require": {
+    "php": "^7.3",
+    "ext-json": "*",
+    "psr/container": "^1.0",
+    "psr/event-dispatcher": "^1.0",
+    "psr/http-message": "^1.0",
+    "psr/http-server-handler": "^1.0",
+    "psr/http-server-middleware": "^1.0"
+  },
+  "require-dev": {
+    "ext-ddtrace": "*",
+    "ext-tideways": "*",
+    "datadog/dd-trace": "^0.37",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+    "icanhazstring/composer-unused": "^0.7.1",
+    "maglnet/composer-require-checker": "^2.1",
+    "phpstan/phpstan": "^0.12.18",
+    "phpunit/phpunit": "^9.0",
+    "slevomat/coding-standard": "^6.1",
+    "slim/slim": "^4.4",
+    "squizlabs/php_codesniffer": "^3.5",
+    "symfony/console": "^5.0",
+    "symfony/event-dispatcher": "^5.0",
+    "symfony/event-dispatcher-contracts": "^2.0",
+    "vimeo/psalm": "^3.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "SEDA\\Tracing\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SEDA\\TracingTest\\": "test/"
+    }
+  },
+  "scripts": {
+    "qa:phpcs": "php vendor/bin/phpcs --standard=ruleset.xml src",
+    "qa:phpcbf": "php vendor/bin/phpcbf --standard=ruleset.xml src -p",
+    "qa:phpstan": "php vendor/bin/phpstan analyze --level 7 src --memory-limit=512M",
+    "qa:psalm": "php vendor/bin/psalm --show-info=true",
+    "qa:require:check": "php vendor/bin/composer-require-checker --config-file=require-check.json check composer.json",
+    "qa:require:unused": "@composer unused",
+    "tests:all": "php vendor/bin/phpunit --coverage-text --colors=never",
+    "tests:unit": "php vendor/bin/phpunit --coverage-text --colors=never --testsuite unit --testdox",
+    "tests:integration": "php vendor/bin/phpunit --coverage-text --colors=never --testsuite integration --testdox"
+  },
+  "scripts-descriptions": {
+    "qa:phpcs": "Run PHPCS (Coding Style)",
+    "qa:phpstan": "Run PHPStan (static analysis)",
+    "qa:psalm": "Run PSALM (static analysis)",
+    "qa:require:check": "Check our code doesn't use undeclared libraries/extensions",
+    "qa:require:unused": "Check our code doesn't require unused libraries",
+    "tests:all": "Run all PHPUnit tests suites",
+    "tests:unit": "Run PHPUnit 'unit' tests suite",
+    "tests:integration": "Run PHPUnit 'integration' tests suite"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

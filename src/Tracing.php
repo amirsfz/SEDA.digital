@@ -87,7 +87,9 @@ final class Tracing
         $this->setTransactionName("[{$request->getMethod()}] {$pattern}");
         $this->setTags([
             'route.arguments' => $route->getArguments(),
-            'route.query_params' => $request->getQueryParams(),
+        ]);
+        $this->setTags([
+            'http.query_parameters' => $request->getQueryParams(),
         ]);
     }
 

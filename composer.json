@@ -19,6 +19,7 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
     "icanhazstring/composer-unused": "^0.7.1",
     "maglnet/composer-require-checker": "^2.1",
+    "opentracing/opentracing": "^1.0.0",
     "phpstan/phpstan": "^0.12.18",
     "phpunit/phpunit": "^9.0",
     "slevomat/coding-standard": "^6.1",
@@ -40,8 +41,8 @@
     }
   },
   "scripts": {
-    "qa:phpcs": "php vendor/bin/phpcs --standard=ruleset.xml src",
-    "qa:phpcbf": "php vendor/bin/phpcbf --standard=ruleset.xml src -p",
+    "qa:phpcs": "php vendor/bin/phpcs src",
+    "qa:phpcbf": "php vendor/bin/phpcbf src -p",
     "qa:phpstan": "php vendor/bin/phpstan analyze --level 7 src --memory-limit=512M",
     "qa:psalm": "php vendor/bin/psalm --show-info=true",
     "qa:require:check": "php vendor/bin/composer-require-checker --config-file=require-check.json check composer.json",

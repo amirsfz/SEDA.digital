@@ -86,7 +86,7 @@ final class Tracing
         $this->setServiceName("{$this->appName}.http");
         $this->setTransactionName("[{$request->getMethod()}] {$pattern}");
         $this->setTags([
-            'route.arguments' => $route->getArguments(),
+            'slim.route.arguments' => $route->getArguments(),
         ]);
         $this->setTags([
             'http.query_parameters' => $request->getQueryParams(),

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="false"
+         stopOnFailure="true"
+         processIsolation="false"
+         forceCoversAnnotation="true"
+         beStrictAboutCoversAnnotation="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="true">
+
+    <testsuites>
+        <testsuite name="all">
+            <directory suffix="Test.php">test</directory>
+        </testsuite>
+<!--        <testsuite name="unit">
+            <directory suffix="Test.php">test/Unit</directory>
+        </testsuite>
+        <testsuite name="integrations">
+            <directory suffix="Test.php">test/Integrations</directory>
+        </testsuite>-->
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+
+    <!--    <php>
+            <env name="JWT_PRIVATE_KEY" value="privatekeyforjwts"/>
+            <env name="API_VERSION" value="1.0"/>
+        </php>-->
+</phpunit>

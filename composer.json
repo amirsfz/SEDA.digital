@@ -47,7 +47,7 @@
     "qa:psalm": "php vendor/bin/psalm --show-info=true",
     "qa:require:check": "php vendor/bin/composer-require-checker --config-file=require-check.json check composer.json",
     "qa:require:unused": "@composer unused",
-    "tests:all": "php vendor/bin/phpunit --coverage-text --colors=never",
+    "tests:all": "php vendor/bin/phpunit --coverage-text --colors=never --testdox",
     "tests:unit": "php vendor/bin/phpunit --coverage-text --colors=never --testsuite unit --testdox",
     "tests:integration": "php vendor/bin/phpunit --coverage-text --colors=never --testsuite integration --testdox"
   },

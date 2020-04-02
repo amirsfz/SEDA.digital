@@ -9,6 +9,8 @@ final class Tideways implements TracerInterface
     public function configure(): TracerInterface
     {
         // TODO: Implement configure() method.
+        $this->start();
+
         return $this;
     }
 
@@ -54,7 +56,25 @@ final class Tideways implements TracerInterface
         \Tideways\Profiler::ignoreTransaction();
     }
 
-    private function hasProfiler() : bool
+    private function isStarted(): bool
+    {
+        if (!$this->hasProfiler()) {
+            return false;
+        }
+
+        return \Tideways\Profiler::isStarted();
+    }
+    private function start(array $options = []): self
+    {
+        if (!$this->hasProfiler() || !$this->isStarted()) {
+            return $this;
+        }
+
+        \Tideways\Profiler::start($options);
+
+        return $this;
+    }
+    private function hasProfiler(): bool
     {
         return class_exists('\Tideways\Profiler');
     }

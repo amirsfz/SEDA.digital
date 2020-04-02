@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace SEDA\Tracing\Tracer;
 
-use DDTrace\Contracts\Span;
 use DDTrace\Contracts\Tracer;
 use DDTrace\Tag;
 
 final class DataDog implements TracerInterface
 {
+    use FlattenTags;
+
     /**
      * @var Tracer
      */
@@ -75,15 +76,10 @@ final class DataDog implements TracerInterface
         if (null === $span) {
             return $this;
         }
-        //$flat = $this->getFlattenTags($tags);
         // @TODO map tags to relevant ones
-        $this->setFlattenTags($tags, $span);
-//        foreach ($tags as $key => $value) {
-//            if (is_array($value)) {
-//                $this->
-//            }
-//            $span->setTag($key, $value);
-//        }
+        foreach ($this->getFlattenedTags($tags) as $key => $value) {
+            $span->setTag($key, $value);
+        }
 
         return $this;
     }
@@ -103,35 +99,6 @@ final class DataDog implements TracerInterface
 
         $configValue['enabled'] = false;
         $configProperty->setValue($this->tracer, $configValue);
-    }
-
-//    private function getFlattenTags(array $tags, ?array &$flatten = null, ?string $prefix = null): array
-//    {
-//        if (null === $flatten) {
-//            $flatten = [];
-//        }
-//        foreach ($tags as $key => $value) {
-//            if (is_array($value)) {
-//                $prefixKey = $prefix !== null ? "{$prefix}.{$key}" : $key;
-//                $this->getFlattenTags($value, $flatten, $prefixKey);
-//                continue;
-//            }
-//            $flatten[$key] = $value;
-//        }
-//
-//        return $flatten;
-//    }
-
-    private function setFlattenTags(array $tags, Span $span, ?string $prefix = null): void
-    {
-        foreach ($tags as $key => $value) {
-            if (is_array($value)) {
-//                $this->setFlattenTags($value, $span,"{$prefix}.{$key}");
-//                continue;
-                $value = json_encode($value, JSON_THROW_ON_ERROR, 512);
-            }
-            $span->setTag($key, $value);
-        }
     }
 
     private function getConfig(): array

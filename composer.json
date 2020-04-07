@@ -1,5 +1,5 @@
 {
-  "name": "seda/tracing",
+  "name": "sedadigital/tracing",
   "description": "A wrapper to help doing traces",
   "type": "library",
   "license": "proprietary",
@@ -32,12 +32,12 @@
   },
   "autoload": {
     "psr-4": {
-      "SEDA\\Tracing\\": "src/"
+      "SEDAdigital\\Tracing\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SEDA\\TracingTest\\": "test/"
+      "SEDAdigital\\TracingTest\\": "test/"
     }
   },
   "scripts": {

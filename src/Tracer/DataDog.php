@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SEDA\Tracing\Tracer;
+namespace SEDAdigital\Tracing\Tracer;
 
 use DDTrace\Contracts\Tracer;
 use DDTrace\Tag;

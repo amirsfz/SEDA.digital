@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SEDA\Tracing;
+namespace SEDAdigital\Tracing;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

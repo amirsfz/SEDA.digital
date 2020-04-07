@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SEDA\Tracing\Tracer;
+namespace SEDAdigital\Tracing\Tracer;
 
 interface TracerInterface
 {

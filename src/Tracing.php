@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SEDA\Tracing;
+namespace SEDAdigital\Tracing;
 
 use Psr\Http\Message\ServerRequestInterface;
-use SEDA\Tracing\Tracer\TracerInterface;
+use SEDAdigital\Tracing\Tracer\TracerInterface;
 use Slim\Interfaces\RouteInterface as Route;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

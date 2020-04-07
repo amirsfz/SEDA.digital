@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SEDA\Tracing;
+namespace SEDAdigital\Tracing;
 
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;

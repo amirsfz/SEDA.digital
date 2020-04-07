@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SEDA\TracingTest\Tracer;
+namespace SEDAdigital\TracingTest\Tracer;
 
 use PHPUnit\Framework\TestCase;
-use SEDA\Tracing\Tracer\FlattenTags;
+use SEDAdigital\Tracing\Tracer\FlattenTags;
 
 class FlattenTagsTest extends TestCase
 {

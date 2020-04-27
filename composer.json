@@ -15,7 +15,7 @@
   "require-dev": {
     "ext-ddtrace": "*",
     "ext-tideways": "*",
-    "datadog/dd-trace": "^0.37",
+    "datadog/dd-trace": "^0.39.2",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
     "icanhazstring/composer-unused": "^0.7.1",
     "maglnet/composer-require-checker": "^2.1",

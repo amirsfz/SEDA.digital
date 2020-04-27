@@ -6,9 +6,10 @@ namespace SEDAdigital\Tracing;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-final class HttpMiddleware
+final class HttpMiddleware implements MiddlewareInterface
 {
     /**
      * @var Tracing
@@ -31,6 +32,11 @@ final class HttpMiddleware
         $this->tracing->handleHttpRequest($request);
 
         return $response;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        return $this->handle($request, $handler);
     }
 
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): responseInterface

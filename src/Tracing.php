@@ -71,7 +71,10 @@ final class Tracing
             return;
         }
         /** @var Route|null $route */
-        $route = $request->getAttribute('route');
+        $route = $request->getAttribute(
+            'route', // slim 3
+            $request->getAttribute('__route__') // slim 4
+        );
         if (null === $route) {
             return;
         }

@@ -98,6 +98,7 @@ final class Tracing
 
     public function handleCLICommand(?Command $command = null, ?InputInterface $input = null): void
     {
+        $this->setServiceName("{$this->appName}.cli");
         if (null === $command || null === $input) {
             $this->ignoreTransaction();
             return;
@@ -106,7 +107,6 @@ final class Tracing
             $this->ignoreTransaction();
             return;
         }
-        $this->setServiceName("{$this->appName}.cli");
         $this->setTransactionName("[CLI] {$command->getName()}");
         $this->setTags([
             'input.arguments' => $input->getArguments(),

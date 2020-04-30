@@ -66,6 +66,7 @@ final class Tracing
 
     public function handleHttpRequest(ServerRequestInterface $request): void
     {
+        $this->setServiceName("{$this->appName}.http");
         if ($request->getMethod() === 'HEAD') {
             $this->ignoreTransaction();
             return;
@@ -86,7 +87,6 @@ final class Tracing
             $this->ignoreTransaction();
             return;
         }
-        $this->setServiceName("{$this->appName}.http");
         $this->setTransactionName("[{$request->getMethod()}] {$pattern}");
         $this->setTags([
             'slim.route.arguments' => $route->getArguments(),

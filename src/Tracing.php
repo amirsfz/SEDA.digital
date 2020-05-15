@@ -124,7 +124,7 @@ final class Tracing
         // remove trailing slash pattern
         $pattern = (string) preg_replace('/(\[\/\])$/', '', $pattern);
         // remove regex from pattern
-        $pattern = (string) preg_replace('/{([a-z]+)\:([^\/]*)}/', '{$1}', $pattern);
+        $pattern = (string) preg_replace('/{([a-z]+)\:([^}]*)(?:}?)}/', '{$1}', $pattern);
 
         return $pattern;
     }

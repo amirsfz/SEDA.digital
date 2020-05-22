@@ -67,7 +67,7 @@ final class Tracing
     public function handleHttpRequest(ServerRequestInterface $request): void
     {
         $this->setServiceName("{$this->appName}.http");
-        $this->tracer->setOperationName('http.request');
+        $this->setOperationName('http.request');
         if ($request->getMethod() === 'HEAD') {
             $this->ignoreTransaction();
             return;
@@ -100,7 +100,7 @@ final class Tracing
     public function handleCLICommand(?Command $command = null, ?InputInterface $input = null): void
     {
         $this->setServiceName("{$this->appName}.cli");
-        $this->tracer->setOperationName('cli.command');
+        $this->setOperationName('cli.command');
         if (null === $command || null === $input) {
             $this->ignoreTransaction();
             return;
@@ -114,6 +114,11 @@ final class Tracing
             'input.arguments' => $input->getArguments(),
             'input.options' => $input->getOptions(),
         ]);
+    }
+
+    public function setOperationName(string $name): void
+    {
+        $this->tracer->setOperationName($name);
     }
 
     public function ignoreTransaction(): void

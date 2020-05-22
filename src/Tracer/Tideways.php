@@ -34,6 +34,12 @@ final class Tideways implements TracerInterface
         return $this;
     }
 
+    public function setOperationName(string $name): TracerInterface
+    {
+        // TODO: Implement setOperationName() method.
+        return $this;
+    }
+
     public function setTags(array $tags): TracerInterface
     {
         if (!$this->hasProfiler()) {

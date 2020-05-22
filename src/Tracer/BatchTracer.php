@@ -46,6 +46,15 @@ final class BatchTracer implements TracerInterface
         return $this;
     }
 
+    public function setOperationName(string $name): TracerInterface
+    {
+        array_map(static function (TracerInterface $tracer) use ($name) {
+            $tracer->setOperationName($name);
+        }, $this->tracers);
+
+        return $this;
+    }
+
     public function setTags(array $tags): TracerInterface
     {
         array_map(static function (TracerInterface $tracer) use ($tags) {

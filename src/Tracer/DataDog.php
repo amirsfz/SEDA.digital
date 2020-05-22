@@ -47,7 +47,6 @@ final class DataDog implements TracerInterface
     {
         $span = $this->tracer->getSafeRootSpan();
         if ($span) {
-            //$span->overwriteOperationName($name);
             $span->setTag(Tag::RESOURCE_NAME, $name);
         }
 
@@ -60,6 +59,16 @@ final class DataDog implements TracerInterface
         if ($span) {
             $span->setTag(Tag::SERVICE_NAME, $name);
         }
+        return $this;
+    }
+
+    public function setOperationName(string $name): TracerInterface
+    {
+        $span = $this->tracer->getSafeRootSpan();
+        if ($span) {
+            $span->overwriteOperationName($name);
+        }
+
         return $this;
     }
 

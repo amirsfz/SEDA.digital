@@ -27,12 +27,26 @@ abstract class OpenTracer implements TracerInterface
     public function setTransactionName(string $name): TracerInterface
     {
         // TODO: Implement setTransactionName() method.
+        $span = $this->tracer->getActiveSpan();
+        if ($span) {
+            //$span->setTag();
+        }
         return $this;
     }
 
     public function setServiceName(string $name): TracerInterface
     {
         // TODO: Implement setServiceName() method.
+        return $this;
+    }
+
+    public function setOperationName(string $name): TracerInterface
+    {
+        // TODO: Implement setOperationName() method.
+        $span = $this->tracer->getActiveSpan();
+        if ($span) {
+            $span->overwriteOperationName($name);
+        }
         return $this;
     }
 

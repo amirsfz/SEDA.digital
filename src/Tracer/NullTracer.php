@@ -21,6 +21,11 @@ final class NullTracer implements TracerInterface
         return $this;
     }
 
+    public function setOperationName(string $name): TracerInterface
+    {
+        return $this;
+    }
+
     public function setTags(array $tags): TracerInterface
     {
         return $this;

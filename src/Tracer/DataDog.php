@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SEDAdigital\Tracing\Tracer;
 
 use DDTrace\Contracts\Tracer;
+use DDTrace\NoopTracer;
 use DDTrace\Tag;
 
 final class DataDog implements TracerInterface
@@ -95,19 +96,7 @@ final class DataDog implements TracerInterface
 
     public function ignoreTransaction(): void
     {
-        // @TODO this is so hacky, there might be a better way to do so!
-//        $tracerWrapperReflection = new \ReflectionClass($this->tracer);
-//        $property = $tracerWrapperReflection->getProperty('tracer');
-//        $property->setAccessible(true);
-//        $tracer = $property->getValue($this->tracer);
-
-        $tracerReflection = new \ReflectionClass($this->tracer);
-        $configProperty = $tracerReflection->getProperty('config');
-        $configProperty->setAccessible(true);
-        $configValue = $configProperty->getValue($this->tracer);
-
-        $configValue['enabled'] = false;
-        $configProperty->setValue($this->tracer, $configValue);
+        $this->tracer = new NoopTracer();
     }
 
     private function getConfig(): array
